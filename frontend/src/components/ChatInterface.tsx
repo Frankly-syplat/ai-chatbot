@@ -268,9 +268,11 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
               : "text-chat-ai-foreground"
           } 
           /* This target specific markdown elements to ensure they look good in chat bubbles */
-          prose-p:leading-relaxed prose-pre:p-0 prose-pre:bg-transparent
-          prose-table:border-collapse prose-th:border prose-th:border-border prose-th:p-2 
-          prose-td:border prose-td:border-border prose-td:p-2`}
+          prose-p:leading-relaxed prose-p:my-2
+          prose-table:my-4 prose-table:border-collapse
+          prose-th:border prose-th:border-border prose-th:bg-muted/50 prose-th:p-2 prose-th:text-left
+          prose-td:border prose-td:border-border prose-td:p-2 prose-td:align-top
+          prose-ul:my-2 prose-li:my-0`}
         >
           {message.content}
         </ReactMarkdown>
