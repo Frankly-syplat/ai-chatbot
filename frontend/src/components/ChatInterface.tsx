@@ -71,7 +71,7 @@ const ChatInterface = ({ onNewChat }: ChatInterfaceProps) => {
 
     // Send message to backend API
     try {
-      const resp = await fetch("http://localhost:8000/api/chat", {
+      const resp = await fetch("https://ai-chatbot-86bo.onrender.com/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMessage.content }),

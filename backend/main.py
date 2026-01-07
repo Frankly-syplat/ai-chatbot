@@ -22,7 +22,9 @@ app = FastAPI(title="AI Chatbot Backend")
 # This allows your frontend (running on localhost:5173 or 3000) to talk to this backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, change this to your specific frontend URL
+    allow_origins=[
+        "https://ai-chatbot-1-tryf.onrender.com", 
+        "http://localhost:5173"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
