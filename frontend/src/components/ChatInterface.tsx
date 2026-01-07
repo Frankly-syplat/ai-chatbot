@@ -252,30 +252,28 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
           <Sparkles className="w-4 h-4 text-muted-foreground" />
         )}
       </div>
-      <div
-  className={`max-w-[85%] rounded-2xl px-4 py-3 ${
-    isUser
-      ? "bg-chat-user text-chat-user-foreground rounded-tr-md"
-      : "bg-chat-ai text-chat-ai-foreground rounded-tl-md"
-  }`}
->
-  {/* Markdown Renderer with Tailwind Prose styling */}
-  <ReactMarkdown
-    remarkPlugins={[remarkGfm]}
-    className={`prose prose-sm max-w-none break-words ${
-      isUser 
-        ? "prose-invert text-chat-user-foreground" 
-        : "text-chat-ai-foreground"
-    } 
-    /* This target specific markdown elements to ensure they look good in chat bubbles */
-    prose-p:leading-relaxed prose-pre:p-0 prose-pre:bg-transparent
-    prose-table:border-collapse prose-th:border prose-th:border-border prose-th:p-2 
-    prose-td:border prose-td:border-border prose-td:p-2`}
-  >
-    {message.content}
-  </ReactMarkdown>
-</div>
-        <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+            <div
+        className={`max-w-[85%] rounded-2xl px-4 py-3 ${
+          isUser
+            ? "bg-chat-user text-chat-user-foreground rounded-tr-md"
+            : "bg-chat-ai text-chat-ai-foreground rounded-tl-md"
+        }`}
+      >
+        {/* Markdown Renderer with Tailwind Prose styling */}
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          className={`prose prose-sm max-w-none break-words ${
+            isUser 
+              ? "prose-invert text-chat-user-foreground" 
+              : "text-chat-ai-foreground"
+          } 
+          /* This target specific markdown elements to ensure they look good in chat bubbles */
+          prose-p:leading-relaxed prose-pre:p-0 prose-pre:bg-transparent
+          prose-table:border-collapse prose-th:border prose-th:border-border prose-th:p-2 
+          prose-td:border prose-td:border-border prose-td:p-2`}
+        >
+          {message.content}
+        </ReactMarkdown>
       </div>
     </motion.div>
   );
