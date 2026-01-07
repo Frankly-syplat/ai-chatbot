@@ -73,7 +73,7 @@ const ChatInterface = ({ onNewChat }: ChatInterfaceProps) => {
 
     // Send message to backend API
     try {
-      const resp = await fetch("https://ai-chatbot-86bo.onrender.com/api/chat", {
+      const resp = await fetch("http://192.168.0.216:8000/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMessage.content }),
@@ -259,23 +259,16 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
             : "bg-chat-ai text-chat-ai-foreground rounded-tl-md"
         }`}
       >
-        {/* Markdown Renderer with Tailwind Prose styling */}
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
+        {/* Markdown Renderer with Tailwind Prose styling - wrapper holds classes (react-markdown v8 removed className prop) */}
+        <div
           className={`prose prose-sm max-w-none break-words ${
-            isUser 
-              ? "prose-invert text-chat-user-foreground" 
-              : "text-chat-ai-foreground"
-          } 
-          /* This target specific markdown elements to ensure they look good in chat bubbles */
-          prose-p:leading-relaxed prose-p:my-2
-          prose-table:my-4 prose-table:border-collapse
-          prose-th:border prose-th:border-border prose-th:bg-muted/50 prose-th:p-2 prose-th:text-left
-          prose-td:border prose-td:border-border prose-td:p-2 prose-td:align-top
-          prose-ul:my-2 prose-li:my-0`}
+            isUser ? "prose-invert text-chat-user-foreground" : "text-chat-ai-foreground"
+          } prose-p:leading-relaxed prose-p:my-2 prose-table:my-4 prose-table:border-collapse prose-th:border prose-th:border-border prose-th:bg-muted/50 prose-th:p-2 prose-th:text-left prose-td:border prose-td:border-border prose-td:p-2 prose-td:align-top prose-ul:my-2 prose-li:my-0`}
         >
-          {message.content}
-        </ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {message.content}
+          </ReactMarkdown>
+        </div>
       </div>
     </motion.div>
   );
