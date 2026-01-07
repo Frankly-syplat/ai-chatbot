@@ -1,8 +1,16 @@
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography"; // 1. Import the plugin
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  // Keep your existing content paths
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+    "./index.html",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -106,5 +114,9 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  // 2. Add 'typography' to your existing list of plugins
+  plugins: [
+    require("tailwindcss-animate"), 
+    typography
+  ],
 } satisfies Config;
